@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls and Cows</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="layout">
+    <section class="hero">
+        <p class="eyebrow">Browser Edition</p>
+        <h1>Bulls and Cows</h1>
+        <p class="intro">
+            Guess the five-digit secret code. Each <strong>B</strong> means a correct digit in the correct
+            position. Each <strong>C</strong> means a correct digit in the wrong position.
+        </p>
+    </section>
+
+    <section class="panel">
+        <div class="status-row">
+            <div>
+                <p class="label">Guesses Used</p>
+                <p class="metric" id="guesses-made">0</p>
+            </div>
+            <div>
+                <p class="label">Guesses Left</p>
+                <p class="metric" id="guesses-left">20</p>
+            </div>
+        </div>
+
+        <form id="guess-form" class="guess-form">
+            <label for="guess-input">Your Guess</label>
+            <div class="guess-controls">
+                <input id="guess-input" name="guess" type="text" inputmode="numeric" maxlength="5" placeholder="12345" autocomplete="off">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <div class="actions">
+            <button id="new-game-button" class="secondary" type="button">New Game</button>
+        </div>
+
+        <p id="message" class="message" aria-live="polite"></p>
+
+        <section class="history">
+            <div class="history-header">
+                <h2>Guess History</h2>
+                <p>Newest guess appears first.</p>
+            </div>
+            <div id="history-list" class="history-list"></div>
+        </section>
+    </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

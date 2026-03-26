@@ -3,11 +3,12 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
 COPY src ./src
+COPY web ./web
 
 RUN javac src/*.java
 
-ENV PORT=42212
+ENV PORT=8080
 
-EXPOSE 42212
+EXPOSE 8080
 
-CMD ["sh", "-c", "java -cp src gameDaemon ${PORT}"]
+CMD ["sh", "-c", "java -cp src WebAppServer ${PORT}"]

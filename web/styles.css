@@ -1,0 +1,229 @@
+:root {
+    --bg: #f3efe5;
+    --panel: rgba(255, 250, 240, 0.92);
+    --ink: #1f2a2e;
+    --muted: #5f6b6d;
+    --accent: #d95d39;
+    --accent-dark: #8f2d17;
+    --line: rgba(31, 42, 46, 0.12);
+    --shadow: 0 22px 60px rgba(67, 51, 39, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at top left, rgba(217, 93, 57, 0.24), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(32, 110, 105, 0.18), transparent 24%),
+        linear-gradient(135deg, #efe6d5 0%, #f8f5ee 55%, #ece4d8 100%);
+}
+
+.layout {
+    width: min(980px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 48px 0 56px;
+    display: grid;
+    gap: 28px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    font-size: 0.78rem;
+    color: var(--accent-dark);
+}
+
+.intro {
+    max-width: 56ch;
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+.status-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.label {
+    margin: 0 0 8px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.metric {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    line-height: 1;
+}
+
+.guess-form {
+    margin-top: 26px;
+}
+
+.guess-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.guess-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.guess-controls input {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    font-size: 1.2rem;
+    letter-spacing: 0.18em;
+    background: rgba(255, 255, 255, 0.84);
+    color: var(--ink);
+}
+
+.guess-controls button,
+.secondary {
+    border: 0;
+    border-radius: 16px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.guess-controls button {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 14px 28px rgba(217, 93, 57, 0.28);
+}
+
+.secondary {
+    background: #d7e5df;
+    color: var(--ink);
+}
+
+.guess-controls button:hover,
+.secondary:hover {
+    transform: translateY(-1px);
+}
+
+.actions {
+    margin-top: 14px;
+}
+
+.message {
+    min-height: 1.5em;
+    margin: 22px 0 0;
+    font-size: 1rem;
+    color: var(--accent-dark);
+}
+
+.history {
+    margin-top: 26px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 14px;
+}
+
+.history-header h2,
+.history-header p {
+    margin: 0;
+}
+
+.history-header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.history-list {
+    display: grid;
+    gap: 10px;
+}
+
+.history-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(31, 42, 46, 0.08);
+}
+
+.history-guess {
+    font-size: 1.2rem;
+    letter-spacing: 0.18em;
+}
+
+.history-result {
+    font-family: "Courier New", monospace;
+    font-size: 1.05rem;
+}
+
+.empty-state {
+    margin: 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--muted);
+}
+
+@media (max-width: 640px) {
+    .layout {
+        width: min(100% - 20px, 980px);
+        padding-top: 28px;
+    }
+
+    .panel {
+        padding: 20px;
+        border-radius: 22px;
+    }
+
+    .status-row {
+        grid-template-columns: 1fr;
+    }
+
+    .guess-controls {
+        flex-direction: column;
+    }
+
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,56 +1,48 @@
-# Bulls and Cows Online Hosting
+# Bulls and Cows Web App
 
-This project is a Java socket game with two separate programs:
-
-- `gameDaemon`: the server
-- `BullsandCows`: the terminal client
-
-## What changed for hosting
-
-The server now reads its port from:
-
-1. the first command-line argument
-2. the `PORT` environment variable
-3. fallback: `42212`
-
-The client can connect to a custom host and port:
-
-```bash
-javac src/*.java
-java -cp src BullsandCows <host> <port>
-```
-
-Example:
-
-```bash
-java -cp src BullsandCows your-server-hostname 42212
-```
-
-If no values are provided, the client still uses `localhost 42212`.
+This project now includes a browser version of Bulls and Cows.
 
 ## Run locally
 
-Start the server:
+Compile the Java sources:
 
 ```bash
 javac src/*.java
-java -cp src gameDaemon
 ```
 
-Start the client in another terminal:
+Start the web server:
 
 ```bash
-java -cp src BullsandCows
+java -cp src WebAppServer
+```
+
+Then open:
+
+```text
+http://localhost:8080
+```
+
+The server also supports a custom port:
+
+```bash
+java -cp src WebAppServer 9000
+```
+
+Or via environment variable:
+
+```bash
+PORT=9000 java -cp src WebAppServer
 ```
 
 ## Deploy online
 
-This is not a web app. It exposes a raw TCP socket, so the hosting platform must support public TCP services.
+This repository includes a `Dockerfile` for container-based deployment.
 
-One practical option is a container-based host that supports TCP services. This repository now includes a `Dockerfile`, so the server can be deployed as a container.
+After deployment, the app serves the game UI from the browser and keeps one game session per browser using cookies.
 
-After deployment, connect with:
+## Legacy terminal version
 
-```bash
-java -cp src BullsandCows <public-hostname> <public-port>
-```
+The original socket-based server and terminal client are still present:
+
+- `gameDaemon`
+- `BullsandCows`
