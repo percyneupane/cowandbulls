@@ -4,10 +4,15 @@ import java.io.*;
 
 
 public class BullsandCows {
+    private static final String DEFAULT_HOST = "localhost";
+    private static final int DEFAULT_PORT = 42212;
+
     public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
         try{
-        Socket socket = new Socket("localhost",42212);
+        String host = args.length > 0 ? args[0] : DEFAULT_HOST;
+        int port = args.length > 1 ? Integer.parseInt(args[1]) : DEFAULT_PORT;
+        Socket socket = new Socket(host, port);
         DataInputStream in = new DataInputStream (socket.getInputStream());
         PrintStream out = new PrintStream(socket.getOutputStream());
         int guessCount =0;
