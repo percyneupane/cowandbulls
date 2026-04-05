@@ -34,15 +34,4 @@ Or via environment variable:
 PORT=9000 java -cp src WebAppServer
 ```
 
-## Deploy online
 
-This repository includes a `Dockerfile` for container-based deployment.
-
-After deployment, the app serves the game UI from the browser and keeps one game session per browser using cookies.
-
-## Legacy terminal version
-
-The original socket-based server and terminal client are still present:
-
-- `gameDaemon`
-- `BullsandCows`
